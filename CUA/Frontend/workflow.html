@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claim Workflow - Global Secure Shield</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/workflow.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <div class="nav-brand">
+                <span class="logo-icon">🛡️</span>
+                <div class="brand-text">
+                    <span class="brand-name">Global Secure Shield</span>
+                    <span class="brand-subtitle">Insurance Portal</span>
+                </div>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="dashboard.html" class="nav-link">
+                    <span class="nav-icon">📊</span>
+                    <span class="nav-text">Dashboard</span>
+                </a></li>
+                <li><a href="risk-score.html" class="nav-link">
+                    <span class="nav-icon">🎯</span>
+                    <span class="nav-text">Risk Scoring</span>
+                </a></li>
+                <li><a href="rules.html" class="nav-link">
+                    <span class="nav-icon">📋</span>
+                    <span class="nav-text">Rules</span>
+                </a></li>
+                <li><a href="workflow.html" class="nav-link nav-active">
+                    <span class="nav-icon">🔄</span>
+                    <span class="nav-text">Workflow</span>
+                </a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <div class="user-profile">
+                    <span class="user-avatar">👤</span>
+                    <span class="user-name">Claims Officer</span>
+                </div>
+                <button class="logout-btn" onclick="Auth.logout()">
+                    <span class="logout-icon">🚪</span>
+                    <span class="logout-text">Logout</span>
+                </button>
+            </div>
+
+            <button class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <!-- Page Header -->
+            <section class="page-header">
+                <div class="header-content">
+                    <h1 class="page-title">
+                        <span class="title-icon">🔄</span>
+                        Claim Processing Workflow
+                    </h1>
+                    <p class="page-subtitle">Step-by-step visualization of our comprehensive claim processing system</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-primary" id="simulateWorkflow">
+                        <span class="btn-icon">▶️</span>
+                        Simulate Workflow
+                    </button>
+                    <button class="btn btn-secondary" id="downloadGuide">
+                        <span class="btn-icon">📄</span>
+                        Download Guide
+                    </button>
+                </div>
+            </section>
+
+            <!-- Workflow Visualization -->
+            <section class="workflow-section">
+                <div class="workflow-container">
+                    <div class="workflow-timeline">
+                        
+                        <!-- Step 1: Document Upload -->
+                        <div class="workflow-step" data-step="1">
+                            <div class="step-marker">
+                                <div class="step-number">1</div>
+                                <div class="step-icon">📄</div>
+                            </div>
+                            <div class="step-content">
+                                <div class="step-header">
+                                    <h3 class="step-title">Document Upload</h3>
+                                    <div class="step-status" id="status-1">Pending</div>
+                                </div>
+                                <div class="step-description">
+                                    Customer or agent uploads required claim documents including forms, bills, and supporting evidence.
+                                </div>
+                                <div class="step-details">
+                                    <div class="detail-grid">
+                                        <div class="detail-item">
+                                            <span class="detail-label">Required Documents:</span>
+                                            <span class="detail-value">Claim form, Bills, ID proof</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="detail-label">Processing Time:</span>
+                                            <span class="detail-value">Immediate</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="detail-label">Validation:</span>
+                                            <span class="detail-value">Format & completeness check</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="step-actions">
+                                <button class="btn-small btn-primary" onclick="showStepDetails(1)">View Details</button>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Policy Check -->
+                        <div class="workflow-step" data-step="2">
+                            <div class="step-marker">
+                                <div class="step-number">2</div>
+                                <div class="step-icon">🔍</div>
+                            </div>
+                            <div class="step-content">
+                                <div class="step-header">
+                                    <h3 class="step-title">Policy Verification</h3>
+                                    <div class="step-status" id="status-2">Pending</div>
+                                </div>
+                                <div class="step-description">
+                                    Automated verification of policy status, coverage limits, premium payments, and eligibility.
+                                </div>
+                                <div class="step-details">
+                                    <div class="detail-grid">
+                                        <div class="detail-item">
+                                            <span class="detail-label">Checks Performed:</span>
+                                            <span class="detail-value">Status, Coverage, Payments</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="detail-label">Processing Time:</span>
+                                            <span class="detail-value">5-10 minutes</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="detail-label">System:</span>
+                                            <span class="detail-value">Policy Management System</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="step-actions">
+                                <button class="btn-small btn-primary" onclick="showStepDetails(2)">View Details</button>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Risk Scoring -->
+                        <div class="workflow-step" data-step="3">
+                            <div class="step-marker">
+                                <div class="step-number">3</div>
+                                <div class="step-icon">🎯</div>
+                            </div>
+                            <div class="step-content">
+                                <div class="step-header">
+                                    <h3 class="step-title">Risk Assessment</h3>
+                                    <div class="step-status" id="status-3">Pending</div>
+                                </div>
+                                <div class="step-description">
+                                    AI-powered risk scoring engine evaluates claim legitimacy using multiple parameters and historical data.
+                                </div>
+                                <div class="step-details">
+                                    <div class="detail-grid">
+                                        <div class="detail-item">
+                                            <span class="detail-label">AI Engine:</span>
+                                            <span class="detail-value">Advanced ML algorithms</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="detail-label">Processing Time:</span>
+                                            <span class="detail-value">2-5 minutes</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="detail-label">Risk Levels:</span>
+                                            <span class="detail-value">Low, Medium, High</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="step-actions">
+                                <button class="btn-small btn-primary" onclick="showStepDetails(3)">View Details</button>
+                                <a href="risk-score.html" class="btn-small btn-secondary">Try Scoring</a>
+                            </div>
+                        </div>
+
+                        <!-- Step 4: Fraud Detection -->
+                        <div class="workflow-step" data-step="4">
+                            <div class="step-marker">
+                                <div class="step-number">4</div>
+                                <div class="step-icon">🛡️</div>
+                            </div>
+                            <div class="step-content">
+                                <div class="step-header">
+                                    <h3 class="step-title">Fraud Detection</h3>
+                                    <div class="step-status" id="status-4">Pending</div>
+                                </div>
+                                <div class="step-description">
+                                    Cross-reference with fraud watchlists, pattern analysis, and suspicious activity detection.
+                                </div>
+                                <div class="step-details">
+                                    <div class="detail-grid">
+                                        <div class="detail-item">
+                                            <span class="detail-label">Databases:</span>
+                                            <span class="detail-value">Watchlist, Pattern DB</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="detail-label">Processing Time:</span>
+                                            <span class="detail-value">3-8 minutes</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="detail-label">Alert Types:</span>
+                                            <span class="detail-value">Red flags, Patterns</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="step-actions">
+                                <button class="btn-small btn-primary" onclick="showStepDetails(4)">View Details</button>
+                            </div>
+                        </div>
+
+                        <!-- Step 5: Manual Review -->
+                        <div class="workflow-step" data-step="5">
+                            <div class="step-marker">
+                                <div class="step-number">5</div>
+                                <div class="step-icon">👤</div>
+                            </div>
+                            <div class="step-content">
+                                <div class="step-header">
+                                    <h3 class="step-title">Manual Review</h3>
+                                    <div class="step-status" id="status-5">Pending</div>
+                                </div>
+                                <div class="step-description">
+                                    Claims officer reviews high-risk claims, validates AI decisions, and makes final assessment.
+                                </div>
+                                <div class="step-details">
+                                    <div class="detail-grid">
+                                        <div class="detail-item">
+                                            <span class="detail-label">Review Criteria:</span>
+                                            <span class="detail-value">Risk score, Fraud alerts</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="detail-label">Processing Time:</span>
+                                            <span class="detail-value">2-24 hours</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="detail-label">Officer Level:</span>
+                                            <span class="detail-value">Senior Claims Officer</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="step-actions">
+                                <button class="btn-small btn-primary" onclick="showStepDetails(5)">View Details</button>
+                            </div>
+                        </div>
+
+                        <!-- Step 6: Final Decision -->
+                        <div class="workflow-step" data-step="6">
+                            <div class="step-marker">
+                                <div class="step-number">6</div>
+                                <div class="step-icon">✅</div>
+                            </div>
+                            <div class="step-content">
+                                <div class="step-header">
+                                    <h3 class="step-title">Approval/Rejection</h3>
+                                    <div class="step-status" id="status-6">Pending</div>
+                                </div>
+                                <div class="step-description">
+                                    Final decision made and communicated to customer with detailed reasoning and next steps.
+                                </div>
+                                <div class="step-details">
+                                    <div class="detail-grid">
+                                        <div class="detail-item">
+                                            <span class="detail-label">Outcomes:</span>
+                                            <span class="detail-value">Approve, Reject, More Info</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="detail-label">Communication:</span>
+                                            <span class="detail-value">Email, SMS, Portal</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="detail-label">Appeals:</span>
+                                            <span class="detail-value">30-day window</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="step-actions">
+                                <button class="btn-small btn-primary" onclick="showStepDetails(6)">View Details</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Workflow Statistics -->
+            <section class="workflow-stats">
+                <div class="stats-card">
+                    <h2 class="stats-title">
+                        <span class="stats-icon">📊</span>
+                        Workflow Performance
+                    </h2>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-icon">⚡</div>
+                            <div class="stat-content">
+                                <div class="stat-value">2.4 hrs</div>
+                                <div class="stat-label">Avg. Processing Time</div>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon">✅</div>
+                            <div class="stat-content">
+                                <div class="stat-value">94.2%</div>
+                                <div class="stat-label">Automation Rate</div>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon">🎯</div>
+                            <div class="stat-content">
+                                <div class="stat-value">97.8%</div>
+                                <div class="stat-label">Accuracy Rate</div>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon">👥</div>
+                            <div class="stat-content">
+                                <div class="stat-value">98.5%</div>
+                                <div class="stat-label">Customer Satisfaction</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Workflow Controls -->
+            <section class="workflow-controls">
+                <div class="controls-card">
+                    <h2 class="controls-title">
+                        <span class="controls-icon">🎛️</span>
+                        Workflow Controls
+                    </h2>
+                    <div class="controls-grid">
+                        <div class="control-group">
+                            <label class="control-label">Simulation Speed</label>
+                            <input type="range" class="control-range" id="simulationSpeed" min="1" max="10" value="5">
+                            <div class="range-labels">
+                                <span>Slow</span>
+                                <span>Fast</span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Auto-approve threshold</label>
+                            <input type="range" class="control-range" id="autoApproveThreshold" min="0" max="100" value="25">
+                            <div class="range-labels">
+                                <span>0% (Manual)</span>
+                                <span>100% (Auto)</span>
+                            </div>
+                        </div>
+                        <div class="control-actions">
+                            <button class="btn btn-primary" id="resetWorkflow">
+                                <span class="btn-icon">🔄</span>
+                                Reset
+                            </button>
+                            <button class="btn btn-secondary" id="pauseWorkflow">
+                                <span class="btn-icon">⏸️</span>
+                                Pause
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Step Details Modal -->
+    <div class="modal" id="stepModal">
+        <div class="modal-content step-modal">
+            <button class="modal-close" id="closeStepModal">✕</button>
+            <div class="modal-header">
+                <h2 class="modal-title" id="stepModalTitle">Step Details</h2>
+            </div>
+            <div class="modal-body" id="stepModalBody">
+                <!-- Dynamic content -->
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/workflow.js"></script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rules Repository - Global Secure Shield</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/rules.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <div class="nav-brand">
+                <span class="logo-icon">🛡️</span>
+                <div class="brand-text">
+                    <span class="brand-name">Global Secure Shield</span>
+                    <span class="brand-subtitle">Insurance Portal</span>
+                </div>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="dashboard.html" class="nav-link">
+                    <span class="nav-icon">📊</span>
+                    <span class="nav-text">Dashboard</span>
+                </a></li>
+                <li><a href="risk-score.html" class="nav-link">
+                    <span class="nav-icon">🎯</span>
+                    <span class="nav-text">Risk Scoring</span>
+                </a></li>
+                <li><a href="rules.html" class="nav-link nav-active">
+                    <span class="nav-icon">📋</span>
+                    <span class="nav-text">Rules</span>
+                </a></li>
+                <li><a href="workflow.html" class="nav-link">
+                    <span class="nav-icon">🔄</span>
+                    <span class="nav-text">Workflow</span>
+                </a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <div class="user-profile">
+                    <span class="user-avatar">👤</span>
+                    <span class="user-name">Claims Officer</span>
+                </div>
+                <button class="logout-btn" onclick="Auth.logout()">
+                    <span class="logout-icon">🚪</span>
+                    <span class="logout-text">Logout</span>
+                </button>
+            </div>
+
+            <button class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <!-- Page Header -->
+            <section class="page-header">
+                <div class="header-content">
+                    <h1 class="page-title">
+                        <span class="title-icon">📋</span>
+                        Rules Repository
+                    </h1>
+                    <p class="page-subtitle">Comprehensive collection of risk scoring rules and validation criteria</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-primary" id="addRuleBtn">
+                        <span class="btn-icon">➕</span>
+                        Add New Rule
+                    </button>
+                    <button class="btn btn-secondary" id="exportRulesBtn">
+                        <span class="btn-icon">📥</span>
+                        Export Rules
+                    </button>
+                </div>
+            </section>
+
+            <!-- Rules Summary -->
+            <section class="rules-summary">
+                <div class="summary-cards">
+                    <div class="summary-card">
+                        <span class="summary-icon">�</span>
+                        <div class="summary-value" id="totalRulesCount">24</div>
+                        <div class="summary-label">Total Rules</div>
+                    </div>
+                    <div class="summary-card">
+                        <span class="summary-icon">🔴</span>
+                        <div class="summary-value" id="highPriorityCount">8</div>
+                        <div class="summary-label">High Priority</div>
+                    </div>
+                    <div class="summary-card">
+                        <span class="summary-icon">📋</span>
+                        <div class="summary-value" id="categoriesCount">3</div>
+                        <div class="summary-label">Categories</div>
+                    </div>
+                    <div class="summary-card">
+                        <span class="summary-icon">🔄</span>
+                        <div class="summary-value">Aug 2025</div>
+                        <div class="summary-label">Last Updated</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Search and Filter -->
+            <section class="rules-section">
+                <div class="rules-header">
+                    <div class="search-controls">
+                        <div class="search-box">
+                            <span class="search-icon">🔍</span>
+                            <input 
+                                type="text" 
+                                placeholder="Search rules by ID, description, or category..."
+                                id="rulesSearch"
+                            >
+                        </div>
+                        <select class="filter-select" id="rulesFilter">
+                            <option value="all">All Severity Levels</option>
+                            <option value="high">High Priority</option>
+                            <option value="medium">Medium Priority</option>
+                            <option value="low">Low Priority</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Rules Accordion -->
+                <div class="rules-accordion">
+                    <!-- This will be populated by JavaScript -->
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <script src="js/main.js"></script>
+    <script src="js/rules.js"></script>
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Global Secure Shield</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <div class="nav-brand">
+                <span class="logo-icon">🛡️</span>
+                <div class="brand-text">
+                    <span class="brand-name">Global Secure Shield</span>
+                    <span class="brand-subtitle">Insurance Portal</span>
+                </div>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="dashboard.html" class="nav-link nav-active">
+                    <span class="nav-icon">📊</span>
+                    <span class="nav-text">Dashboard</span>
+                </a></li>
+                <li><a href="risk-score.html" class="nav-link">
+                    <span class="nav-icon">🎯</span>
+                    <span class="nav-text">Risk Scoring</span>
+                </a></li>
+                <li><a href="rules.html" class="nav-link">
+                    <span class="nav-icon">📋</span>
+                    <span class="nav-text">Rules</span>
+                </a></li>
+                <li><a href="workflow.html" class="nav-link">
+                    <span class="nav-icon">🔄</span>
+                    <span class="nav-text">Workflow</span>
+                </a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <div class="user-profile">
+                    <span class="user-avatar">👤</span>
+                    <span class="user-name">Claims Officer</span>
+                </div>
+                <button class="logout-btn" onclick="Auth.logout()">
+                    <span class="logout-icon">🚪</span>
+                    <span class="logout-text">Logout</span>
+                </button>
+            </div>
+
+            <button class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <!-- Welcome Section -->
+            <section class="welcome-section">
+                <div class="welcome-content">
+                    <h1 class="welcome-title">Welcome back, <span id="userFullName">Claims Officer</span>!</h1>
+                    <p class="welcome-subtitle">Here's your claims management overview for today</p>
+                    <div class="welcome-date">
+                        <span class="date-icon">📅</span>
+                        <span id="currentDate"></span>
+                    </div>
+                </div>
+                <div class="welcome-actions">
+                    <a href="risk-score.html" class="btn btn-primary">
+                        <span class="btn-icon">⚡</span>
+                        New Risk Assessment
+                    </a>
+                    <button class="btn btn-secondary" id="refreshData">
+                        <span class="btn-icon">🔄</span>
+                        Refresh Data
+                    </button>
+                </div>
+            </section>
+
+            <!-- Stats Overview -->
+            <section class="stats-overview">
+                <h2 class="section-title">
+                    <span class="title-icon">📈</span>
+                    Today's Overview
+                </h2>
+                <div class="stats-grid">
+                    <div class="stat-card" data-tooltip="Total claims processed today across India">
+                        <div class="stat-icon total-claims">📋</div>
+                        <div class="stat-number" id="totalClaims">--</div>
+                        <div class="stat-label">Total Claims Today</div>
+                        <div class="stat-trend">
+                            <span class="trend-icon">📈</span>
+                            <span class="trend-text">+12% from yesterday</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card" data-tooltip="Claims awaiting approval as per IRDAI guidelines">
+                        <div class="stat-icon in-review">⏳</div>
+                        <div class="stat-number" id="inReviewClaims">--</div>
+                        <div class="stat-label">In Review</div>
+                        <div class="stat-trend">
+                            <span class="trend-icon">📊</span>
+                            <span class="trend-text">Within TAT limits</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card" data-tooltip="High-risk claims flagged by AI system">
+                        <div class="stat-icon high-risk">🔴</div>
+                        <div class="stat-number" id="highRiskClaims">--</div>
+                        <div class="stat-label">High Risk Claims</div>
+                        <div class="stat-trend">
+                            <span class="trend-icon">⚠️</span>
+                            <span class="trend-text">Requires immediate attention</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card" data-tooltip="Average time to process claims">
+                        <div class="stat-icon avg-time">⏱️</div>
+                        <div class="stat-number" id="avgProcessingTime">--</div>
+                        <div class="stat-label">Avg. Processing Time (hrs)</div>
+                        <div class="stat-trend">
+                            <span class="trend-icon">⬇️</span>
+                            <span class="trend-text">5% improvement</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Charts Section -->
+            <section class="charts-section">
+                <div class="charts-grid">
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3 class="chart-title">
+                                <span class="chart-icon">📊</span>
+                                Claims by Type
+                            </h3>
+                            <div class="chart-controls">
+                                <select class="chart-period">
+                                    <option value="today">Today</option>
+                                    <option value="week">This Week</option>
+                                    <option value="month">This Month</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="claimsTypeChart" width="400" height="200"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3 class="chart-title">
+                                <span class="chart-icon">📈</span>
+                                Risk Score Distribution
+                            </h3>
+                            <div class="chart-legend">
+                                <span class="legend-item low">
+                                    <span class="legend-color"></span>
+                                    Low Risk
+                                </span>
+                                <span class="legend-item medium">
+                                    <span class="legend-color"></span>
+                                    Medium Risk
+                                </span>
+                                <span class="legend-item high">
+                                    <span class="legend-color"></span>
+                                    High Risk
+                                </span>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="riskDistributionChart" width="400" height="200"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recent Claims -->
+            <section class="recent-claims-section">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="title-icon">📋</span>
+                        Recent Claims
+                    </h2>
+                    <div class="section-actions">
+                        <input type="text" class="search-input" placeholder="Search claims..." id="claimsSearch">
+                        <button class="btn btn-secondary" id="exportClaims">
+                            <span class="btn-icon">📥</span>
+                            Export
+                        </button>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Claim ID</th>
+                                <th>Customer</th>
+                                <th>Type</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Risk Level</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="claimsTableBody">
+                            <!-- Dynamic content -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Quick Actions -->
+            <section class="quick-actions-section">
+                <h2 class="section-title">
+                    <span class="title-icon">⚡</span>
+                    Quick Actions
+                </h2>
+                <div class="quick-actions-grid">
+                    <a href="risk-score.html" class="quick-action-card">
+                        <div class="action-icon">🎯</div>
+                        <div class="action-content">
+                            <h3>Risk Assessment</h3>
+                            <p>Evaluate claim risk score</p>
+                        </div>
+                        <div class="action-arrow">→</div>
+                    </a>
+
+                    <a href="rules.html" class="quick-action-card">
+                        <div class="action-icon">�</div>
+                        <div class="action-content">
+                            <h3>Rules Repository</h3>
+                            <p>View insurance rules</p>
+                        </div>
+                        <div class="action-arrow">→</div>
+                    </a>
+
+                    <a href="workflow.html" class="quick-action-card">
+                        <div class="action-icon">🔄</div>
+                        <div class="action-content">
+                            <h3>View Workflow</h3>
+                            <p>Check claim processing steps</p>
+                        </div>
+                        <div class="action-arrow">→</div>
+                    </a>
+
+                    <a href="dashboard.html" class="quick-action-card">
+                        <div class="action-icon">�</div>
+                        <div class="action-content">
+                            <h3>Analytics</h3>
+                            <p>View detailed reports</p>
+                        </div>
+                        <div class="action-arrow">→</div>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Loading Modal -->
+    <div class="modal" id="loadingModal">
+        <div class="modal-content loading-modal">
+            <div class="loading-spinner">
+                <div class="spinner"></div>
+                <h3>Refreshing Data...</h3>
+                <p>Please wait while we update your dashboard</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
