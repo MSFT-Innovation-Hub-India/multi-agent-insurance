@@ -38,11 +38,7 @@ MCP/
 │   ├── example_corporate.pdf
 │   ├── global_secure_shield_health_policy.pdf
 │   └── indian_policy_document_2025.pdf
-├── pdf-mcp-server/            # MCP PDF generation server
-│   ├── src/                   # Server source code
-│   ├── custom-styles/         # Custom document styles
-│   ├── templates/             # Document templates
-│   └── package.json
+|   -github:FabianGenell/pdf-mcp-server (this is the MCP pdf server)
 └── __pycache__/              # Python cache files
 ```
 
