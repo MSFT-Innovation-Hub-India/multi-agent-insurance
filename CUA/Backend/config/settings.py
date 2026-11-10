@@ -11,7 +11,7 @@ class Settings:
     """Application configuration settings."""
     
     # Azure OpenAI Configuration
-    AZURE_OPENAI_API_KEY = os.getenv("AZURE_OPENAI_API_KEY", "Fl4K9mHabFAqqaeEgbpziq4pSK98eXiQm6PMs3r2hKA8YWMcV4WJJQQJ99BDACHYHv6XJ3w3AAAAACOGFNlv")
+    AZURE_OPENAI_API_KEY = os.getenv("AZURE_OPENAI_API_KEY")
     AZURE_OPENAI_ENDPOINT = os.getenv("AZURE_OPENAI_ENDPOINT", "https://ai-ronakofficial14141992ai537166517119.openai.azure.com")
     AZURE_OPENAI_API_VERSION = os.getenv("AZURE_OPENAI_API_VERSION", "2025-04-01-preview")
     AZURE_OPENAI_MODEL = "computer-use-preview"
